@@ -4,7 +4,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 
+import com.avos.avoscloud.AVException;
 import com.avos.avoscloud.AVObject;
+import com.avos.avoscloud.SaveCallback;
 import com.dd.processbutton.iml.ActionProcessButton;
 
 import butterknife.BindView;
@@ -37,7 +39,6 @@ public class OfferPubActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_offer_pub);
         ButterKnife.bind(this);
-
     }
 
 
@@ -49,6 +50,12 @@ public class OfferPubActivity extends AppCompatActivity {
         newOffer.put("exp_limit", tv_limit_exp.getText().toString());
         newOffer.put("edu_limit", tv_limit_edu.getText().toString());
         newOffer.put("recr_requ", et_offer_desc.getText().toString());
+        newOffer.saveInBackground(new SaveCallback() {
+            @Override
+            public void done(AVException e) {
+
+            }
+        });
     }
 
 
